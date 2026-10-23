@@ -1,0 +1,17 @@
+# Generated images (never commit firmware dumps)
+*.img
+*.bin
+*.elf
+*.mbn
+*.zip
+*.7z
+*.rar
+
+# Local tooling output
+__pycache__/
+*.pyc
+
+# OS junk
+Thumbs.db
+desktop.ini
+.DS_Store

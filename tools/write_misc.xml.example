@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<!--
+  rawprogram XML that writes only the first two sectors of the `misc`
+  partition, i.e. just the bootloader control block.
+
+  ADJUST BEFORE USE:
+    physical_partition_number  -> LUN that holds misc (usually 0)
+    start_sector              -> misc start sector on YOUR device
+                                 (read it from your own GPT / partitions.json)
+
+  Example values below are for RedMagic 8 Pro / NX729J:
+    misc = LUN0, start_sector 8200, size 1 MiB (256 x 4096-byte sectors)
+
+  Write with:
+    fh_loader.exe --port=\\.\COM5 --sendxml=write_misc.xml ^
+        --search_path=. --noprompt --zlpawarehost=1 --memoryname=ufs
+-->
+<data>
+  <program SECTOR_SIZE_IN_BYTES="4096"
+           file_sector_offset="0"
+           filename="misc_tofastbootd.img"
+           label="misc"
+           num_partition_sectors="2"
+           physical_partition_number="0"
+           start_sector="8200" />
+</data>
